@@ -1,4 +1,5 @@
 LIBC {
   global:
     haxprintf; # arm
+    nvrealc; # arm
 };

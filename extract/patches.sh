@@ -16,6 +16,8 @@ function patch_t124_glcore() {
   sed -i 's/libc.so/libs.so/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib/libglcore.so
   sed -i 's/vsnprintf/haxprintf/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib/libglcore.so
   sed -i 's/__haxprintf/__vsnprintf/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib/libglcore.so
+  # Only the dynamic symbol name (preceded by a *_chk symbol), not the string in .rodata
+  sed -i 's/_chk\x00realloc\x00/_chk\x00nvrealc\x00/' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib/libglcore.so
   sed -i 's/libc.so/libs.so/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib64/libglcore.so
   sed -i 's/vsnprintf/haxprintf/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib64/libglcore.so
   sed -i 's/__haxprintf/__vsnprintf/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/nvgpu/lib64/libglcore.so
