@@ -1,0 +1,5 @@
+# Kernel 3.10 with the memfd backport (TARGET_HAS_MEMFD_BACKPORT): ART reopens
+# its JIT cache memfd through /proc/self/fd, which needs open on the tmpfs
+# label. Without it zygote aborts with "Not whitelisted: /memfd:jit-zygote-cache".
+allow zygote zygote_tmpfs:file open;
+allow appdomain appdomain_tmpfs:file open;

@@ -1,0 +1,2 @@
+# vndservice registered by libnvhwc_service inside the composer
+type nvhwc_vndservice, vndservice_manager_type;

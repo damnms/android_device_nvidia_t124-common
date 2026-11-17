@@ -76,3 +76,7 @@ TARGET_LD_SHIM_LIBS += \
 ZYGOTE_WHITELIST_PATH_EXTRA := \"/dev/nvhost-ctrl\",\"/dev/nvmap\",
 
 include device/nvidia/tegra-common/BoardConfigTegra.mk
+
+# SELinux: t124 specific labels and rules. After BoardConfigTegra.mk, so the
+# nvidia types are declared before these rules use them.
+BOARD_VENDOR_SEPOLICY_DIRS += device/nvidia/t124-common/sepolicy/vendor

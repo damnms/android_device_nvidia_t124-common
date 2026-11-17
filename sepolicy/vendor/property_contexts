@@ -1,0 +1,8 @@
+# Set by the nvidia composer (sys.tegra.refresh, sys.tegra.dpy.rotation)
+sys.tegra.			u:object_r:hwc_prop:s0
+sys.ui.resolution.		u:object_r:hwc_prop:s0
+sys.display-size		u:object_r:hwc_prop:s0
+sys.display-colorspace		u:object_r:hwc_prop:s0
+sys.hwc.hdr.supported		u:object_r:hwc_prop:s0
+sys.nrdp.hdr.revision		u:object_r:hwc_prop:s0
+persist.sys.NV_DISP		u:object_r:hwc_prop:s0

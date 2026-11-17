@@ -1,0 +1,17 @@
+# The LineageOS linker calls access() on every TARGET_LD_SHIM_LIBS path in
+# every process, including /system/bin/app_process32 (libshim_zw for zygote).
+# A denied access is expected and handled (the path is used unresolved).
+dontaudit domain zygote_exec:file { read getattr };
+
+# Apps probing nvidia's PHS service; they work without it
+dontaudit appdomain nvphsd_hwservice:hwservice_manager find;
+
+# Device init scripts touching paths that do not exist on this kernel
+# (cpuset files under /dev, /tmp, the gps data dir, module autoload)
+dontaudit vendor_init device:file { create write };
+dontaudit vendor_init tmpfs:dir { add_name create write };
+dontaudit vendor_init system_data_file:dir setattr;
+dontaudit vendor_init kernel:system module_request;
+
+# Camera properties read during boot; the camera does not work yet anyway
+dontaudit { system_server platform_app } exported_camera_prop:file read;

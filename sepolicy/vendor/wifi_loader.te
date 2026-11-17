@@ -1,0 +1,2 @@
+# wifi_loader.sh reads /proc/device-tree/bcmdhd_wlan/status
+allow wifi_loader proc:file r_file_perms;

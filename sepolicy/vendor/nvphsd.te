@@ -1,0 +1,2 @@
+allow nvphsd sysfs_disp_dev:dir search;
+allow nvphsd sysfs_disp_dev:file r_file_perms;

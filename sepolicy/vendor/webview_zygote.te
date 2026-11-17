@@ -1,0 +1,5 @@
+# The nvidia EGL stack probes /dev/nvhost-ctrl while preloading; webview_zygote
+# may not open GPU devices (neverallow) and does not need to.
+dontaudit webview_zygote gpu_device:chr_file { getattr open read write };
+# webview_zygote looks up the resource cache dir; not needed for WebView
+dontaudit webview_zygote resourcecache_data_file:dir search;

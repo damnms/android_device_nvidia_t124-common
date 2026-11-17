@@ -1,0 +1,2 @@
+# init.wifi_region.rc sets up and writes the bcmdhd nvram_path parameter
+allow vendor_init sysfs_wlan_fwpath:file { w_file_perms setattr };

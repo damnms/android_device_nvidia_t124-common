@@ -1,0 +1,6 @@
+# mpu calibration on /usercalib (usercalib_file, declared in device/nvidia/touch)
+allow hal_sensors_tegra mnt_vendor_file:dir search;
+r_dir_file(hal_sensors_tegra, factory_file)
+allow hal_sensors_tegra usercalib_file:dir create_dir_perms;
+allow hal_sensors_tegra usercalib_file:file create_file_perms;
+allow hal_sensors_tegra vendor_data_file:lnk_file read;

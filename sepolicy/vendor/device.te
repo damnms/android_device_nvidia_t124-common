@@ -1,0 +1,2 @@
+# /dev/tegra_avpchannel, AVP video engine used by the nvidia OMX components
+type nvavp_device, dev_type;

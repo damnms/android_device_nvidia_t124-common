@@ -1,0 +1,2 @@
+# rm_ts_server checks whether a charger is connected
+r_dir_file(raydium, sysfs_batteryinfo)
