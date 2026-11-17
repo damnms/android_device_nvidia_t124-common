@@ -16,6 +16,7 @@ LOCAL_PATH := $(call my-dir)
 
 PRODUCT_PACKAGES += \
                     android.hardware.sensors@1.0-impl \
+                    android.hardware.sensors@1.0-service \
                     sensors.default.api_v1.3.mpl520.nvs
 
 PRODUCT_PROPERTY_OVERRIDES += \
