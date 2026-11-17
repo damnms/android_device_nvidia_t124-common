@@ -70,7 +70,7 @@ PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 TARGET_LD_SHIM_LIBS += \
   /system/vendor/lib/libnvomxadaptor.so|/system/lib/libmedia_omx.so \
   /system/vendor/lib/libnvomxadaptor.so|/system/vendor/lib/libnvmm_shim.so \
-  /system/vendor/lib/libnvmlite_video.so|/system/vendor/lib/libnvos_shim.so
+  /system/vendor/lib/libnvmmlite_video.so|/system/vendor/lib/libnvos_shim.so
 
 # Zygote whitelist extra paths
 ZYGOTE_WHITELIST_PATH_EXTRA := \"/dev/nvhost-ctrl\",\"/dev/nvmap\",
