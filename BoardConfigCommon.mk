@@ -30,7 +30,12 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Camera shims
 ifeq ($(TARGET_TEGRA_CAMERA),nvcamera-t124)
-TARGET_LD_SHIM_LIBS += /system/vendor/lib/hw/camera.tegra.so|/system/vendor/lib/libcamera_shim.so
+TARGET_LD_SHIM_LIBS += \
+  /system/vendor/lib/hw/camera.tegra.so|/system/vendor/lib/libcamera_shim.so \
+  /system/vendor/lib/libnvfnet.so|/system/vendor/lib/libcamera_egl_shim.so \
+  /system/vendor/lib/libnvmm_camera_v3.so|/system/vendor/lib/libcamera_egl_shim.so \
+  /system/vendor/lib/libscf.so|/system/vendor/lib/libcamera_egl_shim.so \
+  /system/vendor/lib/egl/libEGL_tegra.so|/system/vendor/lib/libnvphs_shim.so
 endif
 
 # nvgpu shims

@@ -16,6 +16,22 @@ LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_SRC_FILES        := camera_egl.cpp
+LOCAL_MULTILIB         := 32
+LOCAL_MODULE           := libcamera_egl_shim
+LOCAL_SHARED_LIBRARIES := libEGL
+LOCAL_VENDOR_MODULE    := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES        := phs_hints.cpp
+LOCAL_MULTILIB         := 32
+LOCAL_MODULE           := libnvphs_shim
+LOCAL_SHARED_LIBRARIES := libdl
+LOCAL_VENDOR_MODULE    := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE           := libnvmm_shim
 LOCAL_SRC_FILES        := nvmm_shims.cpp
 LOCAL_MULTILIB         := 32

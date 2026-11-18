@@ -25,6 +25,13 @@ function patch_t124_glcore() {
 
 function patch_t124_scf() {
   sed -i 's/libprotobuf-cpp-lite.so/libprotobuf-cpp-lold.so/g' ${LINEAGE_ROOT}/${OUTDIR}/t124/camera/lib/libscf.so
+  # EGL device emulation (libcamera_egl_shim); only the dynamic symbol names, not the .rodata string
+  sed -i 's/Display\x00eglGetProcAddress\x00/Display\x00scfGetProcAddress\x00/' ${LINEAGE_ROOT}/${OUTDIR}/t124/camera/lib/libscf.so
+  sed -i 's/\x00eglQueryString\x00/\x00scfQueryString\x00/' ${LINEAGE_ROOT}/${OUTDIR}/t124/camera/lib/libscf.so
+  for lib in libnvfnet.so libnvmm_camera_v3.so; do
+    sed -i 's/\x00eglGetProcAddress\x00/\x00scfGetProcAddress\x00/' ${LINEAGE_ROOT}/${OUTDIR}/t124/camera/lib/${lib}
+    sed -i 's/\x00eglQueryString\x00/\x00scfQueryString\x00/' ${LINEAGE_ROOT}/${OUTDIR}/t124/camera/lib/${lib}
+  done
 }
 
 function patch_t124_intrinsics() {

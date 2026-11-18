@@ -1,0 +1,16 @@
+# The passthrough camera HAL (camera.tegra.so, libscf.so) runs in cameraserver.
+# It reads the display mode for the sensor orientation and the GPU and EMC
+# clock rates for its CUDA/GL processing.
+r_dir_file(cameraserver, sysfs_disp_dev)
+r_dir_file(cameraserver, sysfs_tegra_gpu)
+r_dir_file(cameraserver, sysfs_tegra_emc)
+
+# It also uses the SensorManager (device orientation); without it the HAL
+# thread blocks for 5 s on every lookup.
+allow cameraserver sensorservice_service:service_manager find;
+binder_call(cameraserver, system_server)
+
+# The tegra camera stack and libEGL_tegra send PHS throughput hints
+# (as hal_camera_tegra does for the binderized HAL).
+allow cameraserver nvphsd_hwservice:hwservice_manager find;
+allow_use_phs(cameraserver)

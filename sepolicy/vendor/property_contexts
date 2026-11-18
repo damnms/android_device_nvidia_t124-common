@@ -6,3 +6,5 @@ sys.display-colorspace		u:object_r:hwc_prop:s0
 sys.hwc.hdr.supported		u:object_r:hwc_prop:s0
 sys.nrdp.hdr.revision		u:object_r:hwc_prop:s0
 persist.sys.NV_DISP		u:object_r:hwc_prop:s0
+# Read by the camera passthrough wrapper in cameraserver
+ro.vendor.camera.wait_acquire_fences	u:object_r:vendor_camera_prop:s0

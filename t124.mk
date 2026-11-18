@@ -29,8 +29,9 @@ PRODUCT_PACKAGES += \
 # Camera Shims
 ifeq ($(TARGET_TEGRA_CAMERA),nvcamera-t124)
 PRODUCT_PACKAGES += \
+    libcamera_egl_shim \
     libcamera_shim \
-    libEGL_vndk
+    libnvphs_shim
 endif
 
 ifeq ($(TARGET_TEGRA_GPU),nvgpu-t124)

@@ -46,6 +46,10 @@
 # Devices
 /dev/tegra_avpchannel		u:object_r:nvavp_device:s0
 /dev/ttyTHS2			u:object_r:hci_attach_dev:s0
+# PHS hint shim, loaded by libEGL_tegra in every process (like libnvphs.so)
+/(vendor|system/vendor)/lib/libnvphs_shim\.so	u:object_r:same_process_hal_file:s0
+# Camera sensors (rear ov5693 with ad5823 focuser, front ov5693.1)
+/dev/ov5693(\.1)?		u:object_r:camera_device:s0
 
 # Sensors HAL as a binderized service (was passthrough in system_server, which
 # may not open /dev/iio:device* on Android 11)
