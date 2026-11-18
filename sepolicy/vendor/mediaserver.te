@@ -1,0 +1,2 @@
+# Read when recording audio (camera.* properties via the media framework)
+get_prop(mediaserver, exported_camera_prop)

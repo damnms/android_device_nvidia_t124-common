@@ -9,6 +9,12 @@ r_dir_file(cameraserver, sysfs_tegra_emc)
 # thread blocks for 5 s on every lookup.
 allow cameraserver sensorservice_service:service_manager find;
 binder_call(cameraserver, system_server)
+# Sensor event channel (BitTube socket pair) from sensorservice
+allow cameraserver system_server:unix_stream_socket { read write getattr };
+
+# Memory and SoC information read by the NVIDIA camera stack
+r_dir_file(cameraserver, proc_meminfo)
+r_dir_file(cameraserver, sysfs_soc)
 
 # The tegra camera stack and libEGL_tegra send PHS throughput hints
 # (as hal_camera_tegra does for the binderized HAL).
