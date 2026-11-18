@@ -1,4 +1,6 @@
 # chown/chmod of sysfs nodes from the device init scripts and the I/O
 # scheduler setting from lineage-iosched.rc
 allow init sysfs_device_platform:file setattr;
+# init.tn8.rc: chown/chmod of the GPS standby GPIO (gpio61/value)
+allow init sysfs_gps:file setattr;
 allow init sysfs_mmc_host:file { open write setattr };

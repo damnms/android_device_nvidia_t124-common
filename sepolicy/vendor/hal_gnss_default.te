@@ -1,0 +1,7 @@
+# gps.brcm (loaded by android.hardware.gnss@1.0-impl) connects to glgps over
+# /dev/socket/gps and reads /data/system/gps/libgps.conf.
+unix_socket_connect(hal_gnss_default, gps, gpsd)
+
+allow hal_gnss_default system_data_file:dir search;
+allow hal_gnss_default gps_data_file:dir search;
+allow hal_gnss_default gps_data_file:file r_file_perms;

@@ -1,0 +1,22 @@
+# Broadcom GPS daemon (glgps_nvidiaTegra2android, service gpsd in init.gps.rc).
+# Talks to the BCM4752 on /dev/ttyTHS1, toggles its standby GPIO, keeps its
+# pipes and LTO data in /data/system/gps (paths are fixed in the blob) and
+# serves the gps.brcm HAL module over /dev/socket/gps.
+type gpsd, domain;
+type gpsd_exec, exec_type, vendor_file_type, file_type;
+type gps_data_file, file_type, data_file_type;
+
+init_daemon_domain(gpsd)
+# LTO (orbit prediction) download from the Broadcom server
+net_domain(gpsd)
+wakelock_use(gpsd)
+
+allow gpsd gps_device:chr_file rw_file_perms;
+allow gpsd sysfs_gps:file rw_file_perms;
+
+allow gpsd system_data_file:dir search;
+allow gpsd gps_data_file:dir create_dir_perms;
+allow gpsd gps_data_file:{ file fifo_file sock_file } create_file_perms;
+
+# /vendor/etc/gps/gpsconfig.xml
+r_dir_file(gpsd, vendor_configs_file)

@@ -66,5 +66,13 @@
 /sys/devices/platform/7000c400\.i2c/i2c-1/1-000b/power_supply(/.*)?	u:object_r:sysfs_batteryinfo:s0
 /sys/devices/platform/7000c400\.i2c/i2c-1/1-006b/power_supply(/.*)?	u:object_r:sysfs_batteryinfo:s0
 
+# GPS: BCM4752 on UART-B, standby on GPIO 61 (exported by init.tn8.rc),
+# glgps keeps its pipes and LTO data in /data/system/gps (fixed in the blob)
+/dev/ttyTHS1							u:object_r:gps_device:s0
+/dev/socket/gps							u:object_r:gps_socket:s0
+/(vendor|system/vendor)/bin/glgps_nvidiaTegra2android		u:object_r:gpsd_exec:s0
+/data/system/gps(/.*)?						u:object_r:gps_data_file:s0
+/sys/devices/platform/6000d000\.gpio/gpio/gpio61/value		u:object_r:sysfs_gps:s0
+
 # Wi-Fi regulatory region switch (init.wifi_region.rc)
 /sys/module/bcmdhd/parameters/nvram_path	u:object_r:sysfs_wlan_fwpath:s0
