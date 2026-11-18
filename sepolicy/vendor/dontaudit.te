@@ -15,3 +15,6 @@ dontaudit vendor_init kernel:system module_request;
 
 # Camera properties read during boot; the camera does not work yet anyway
 dontaudit { system_server platform_app } exported_camera_prop:file read;
+
+# Settings (storage/memory pages) probe zram and pagetypeinfo; harmless
+dontaudit system_app { proc_pagetypeinfo sysfs_zram }:file r_file_perms;
