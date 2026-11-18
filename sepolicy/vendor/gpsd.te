@@ -4,7 +4,12 @@
 # serves the gps.brcm HAL module over /dev/socket/gps.
 type gpsd, domain;
 type gpsd_exec, exec_type, vendor_file_type, file_type;
-type gps_data_file, file_type, data_file_type;
+# /data/system/gps is outside /data/vendor, so sepolicy_tests wants a core
+# data type there. Mark it as one and list the two vendor domains that use it
+# as violators of the core/vendor data split (the paths are fixed in the
+# blobs, and the device does not enforce full Treble).
+type gps_data_file, file_type, data_file_type, core_data_file_type;
+typeattribute gpsd data_between_core_and_vendor_violators;
 
 init_daemon_domain(gpsd)
 # LTO (orbit prediction) download from the Broadcom server
