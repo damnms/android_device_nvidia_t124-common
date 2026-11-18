@@ -32,6 +32,14 @@ LOCAL_VENDOR_MODULE    := true
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_SRC_FILES        := gps_ssl.cpp
+LOCAL_MULTILIB         := 32
+LOCAL_MODULE           := libgps_shim
+LOCAL_SHARED_LIBRARIES := libssl
+LOCAL_VENDOR_MODULE    := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE           := libnvmm_shim
 LOCAL_SRC_FILES        := nvmm_shims.cpp
 LOCAL_MULTILIB         := 32
