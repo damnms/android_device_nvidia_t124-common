@@ -1,7 +1,2 @@
 # init.wifi_region.rc sets up and writes the bcmdhd nvram_path parameter
 allow vendor_init sysfs_wlan_fwpath:file { w_file_perms setattr };
-
-# init.gps.rc creates /data/system/gps and sets its owner and mode. Its type
-# is a core data type (see gpsd.te), which the generic vendor_init rules
-# leave out.
-allow vendor_init gps_data_file:dir create_dir_perms;
