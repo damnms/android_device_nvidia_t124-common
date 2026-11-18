@@ -20,3 +20,7 @@ r_dir_file(cameraserver, sysfs_soc)
 # (as hal_camera_tegra does for the binderized HAL).
 allow cameraserver nvphsd_hwservice:hwservice_manager find;
 allow_use_phs(cameraserver)
+
+# The NVIDIA camera HAL looks up the power service on every camera open and
+# carries on without it.
+dontaudit cameraserver power_service:service_manager find;
